@@ -86,3 +86,8 @@ async def start_postgres_listener():
         await notifier.start_listening()
     except Exception as e:
         logger.error(f"Error in PostgreSQL listener: {e}")
+
+app = FastAPI(title="Real-Time Inventory Tracker", lifespan=lifespan)
+
+# Mount static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
