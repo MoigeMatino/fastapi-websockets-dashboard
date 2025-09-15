@@ -56,7 +56,7 @@ class PostgresNotifier:
         except Exception as e:
             logger.error(f"Error handling notification: {e}")
 
-    
+    # only called when a database event is published i.e. when PostgreSQL sends a NOTIFY message
     def _handle_notification(self, connection, pid, channel, payload):
         """Sync wrapper for asyncpg"""
         asyncio.create_task(
