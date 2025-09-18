@@ -7,5 +7,8 @@ while ! nc -z db 5432; do
 done
 
 echo "PostgreSQL started"
+# Run SQL script to set up db
+psql -h db -U postgres -d inventory_db -f /setup_db.sql
+
 
 exec "$@"
